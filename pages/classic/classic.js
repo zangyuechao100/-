@@ -1,25 +1,31 @@
 // pages/classic/classic.js
-import Http from './../../util/http.js'
-let http = new Http()
+import Classic from './../../models/classic.js'
+import LikeModel from './../../models/like.js'
+let classic = new Classic()
+let likeModel = new LikeModel()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    test: 1
+    classicData: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    http.request({
-      url: 'classic/latest',
-      success: (res) => {
-        console.log(res)
-      }
+    classic.getLatest((res) => {
+      this.setData({
+        classicData: res
+      })
     })
+  },
+
+  onLike: function (e) {
+    let behavior = e.detail.behavior
+    likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type)
   },
 
   /**

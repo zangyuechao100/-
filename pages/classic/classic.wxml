@@ -1,3 +1,7 @@
 <view>
-  <like-cmp></like-cmp>
+  <view class="header">
+    <v-epsoide class="epsoide" index="{{classicData.index}}"></v-epsoide>
+    <v-like class="like" bind:like="onLike" count="{{classicData.fav_nums}}" like="{{classicData.like_status}}"></v-like>
+  </view>
+  <v-movie img="{{classicData.image}}" content="{{classicData.content}}"></v-movie>
 </view>
