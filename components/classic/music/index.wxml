@@ -1,0 +1,6 @@
+<view class="container">
+    <images />
+    <images />
+    <images src="./images/music@tag.png" />
+    <text>{{content}}</text>
+</view>

@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classicData: {}
+    classicData: {},
+    lastest: true,
+    first: false
   },
 
   /**
@@ -26,6 +28,25 @@ Page({
   onLike: function (e) {
     let behavior = e.detail.behavior
     likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type)
+  },
+
+  onNext: function () {
+    this.updateClassic('next')
+  },
+
+  onPrevious: function () {
+    this.updateClassic('previous')
+  },
+
+  updateClassic (nextOrPrevious) {
+    let index = this.data.classicData.index
+    classic.getClassic(index, nextOrPrevious,(res) => {
+      this.setData({
+        classicData: res,
+        lastest: classic.isLastest(res.index),
+        first: classic.isFirst(res.index)
+      })
+    })
   },
 
   /**
