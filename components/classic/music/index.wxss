@@ -26,3 +26,18 @@
   bottom: 160rpx;
   right: 310rpx;
 }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+
+}
+
+.rotation {
+  animation: rotate 12s linear infinite;
+}
