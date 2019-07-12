@@ -1,11 +1,38 @@
 {
   "pages": [
-    "pages/classic/classic"
+    "pages/classic/classic",
+    "pages/book/book",
+    "pages/my/my"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "测试公众号",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#000000",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "selectedIconPath": "images/classic@highlight.png",
+        "pagePath": "pages/classic/classic",
+        "text": "流行",
+        "iconPath": "images/classic.png"
+      },
+      {
+        "selectedIconPath": "images/book@highlight.png",
+        "pagePath": "pages/book/book",
+        "text": "书籍",
+        "iconPath": "images/book.png"
+      },
+      {
+        "selectedIconPath": "images/my@highlight.png",
+        "pagePath": "pages/my/my",
+        "text": "喜欢",
+        "iconPath": "images/my.png"
+      }
+    ]
+  }
 }

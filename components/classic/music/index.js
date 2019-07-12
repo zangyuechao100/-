@@ -18,7 +18,7 @@ Component({
     playing: false
   },
 
-  attached: function () {
+  attached () {
     this._recoverStatus()
     this._monitorSwtich()
   },

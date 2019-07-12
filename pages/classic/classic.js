@@ -19,8 +19,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    classic.getLatest((res) => {
+  onLoad (options) {
+    classic.getLatest().then((res) => {
       this.setData({
         classicData: res,
         likeCount: res.fav_nums,
@@ -29,22 +29,22 @@ Page({
     })
   },
 
-  onLike: function (e) {
+  onLike (e) {
     let behavior = e.detail.behavior
     likeModel.like(behavior, this.data.classicData.id, this.data.classicData.type)
   },
 
-  onNext: function () {
+  onNext () {
     this.updateClassic('next')
   },
 
-  onPrevious: function () {
+  onPrevious () {
     this.updateClassic('previous')
   },
 
   updateClassic (nextOrPrevious) {
     let index = this.data.classicData.index
-    classic.getClassic(index, nextOrPrevious,(res) => {
+    classic.getClassic(index, nextOrPrevious).then((res) => {
       this._getLikeStatus(res.id, res.type)
       this.setData({
         classicData: res,
@@ -55,7 +55,7 @@ Page({
   },
 
   _getLikeStatus (artID, category) {
-    likeModel.getClassicLikeStatus(artID, category, (res) => {
+    likeModel.getClassicLikeStatus(artID, category).then((res) => {
       this.setData({
         likeCount: res.fav_nums,
         likeStatus: res.like_status

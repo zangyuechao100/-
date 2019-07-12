@@ -1,30 +1,24 @@
 import Http from './../util/http.js'
 
 class Classic extends Http {
-    getLatest (sCallback) {
-      this.request({
-        url: 'classic/latest',
-        success: (res) => {
-          wx.setStorageSync(this._getKey(res.index) + '', res)
-          sCallback(res)
-          this._setLastestIndex(res.index)
-        }
+    getLatest () {
+      return this.request('classic/latest').then((res) => {
+        wx.setStorageSync(this._getKey(res.index) + '', res)
+        this._setLastestIndex(res.index)
+        return res
       })
     }
 
-    getClassic (index, nextOrPrevious, sCallback) {
+    getClassic (index, nextOrPrevious) {
       let key = nextOrPrevious === 'next' ? this._getKey(index + 1) : this._getKey(index - 1)
       let classic = wx.getStorageSync(key)
       if (!classic) {
-        this.request({
-          url: `classic/${index}/${nextOrPrevious}`,
-          success: (res) => {
-            wx.setStorageSync(this._getKey(res.index) + '', res)
-            sCallback(res)
-          }
+        return this.request(`classic/${index}/${nextOrPrevious}`).then((res) => {
+          wx.setStorageSync(this._getKey(res.index) + '', res)
+          return res
         })
       } else {
-        sCallback(classic)
+        return Promise.resolve(classic)
       }
     }
 
