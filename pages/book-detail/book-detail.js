@@ -1,4 +1,4 @@
-// pages/book/book.js
+// pages/book-deatil/book-detail.js
 import BookModel from './../../models/book.js'
 const bookModel = new BookModel() 
 Page({
@@ -7,16 +7,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books: []
+    detail: [],
+    likeStatus: false,
+    comments: [],
+    likeCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    bookModel.getHotList().then((res) => {
+    const bid = options.bid
+    bookModel.getDetail(bid).then((detail) => {
       this.setData({
-        books: res
+        detail
+      })
+    })
+    bookModel.getLikeStatus(bid).then((likeStatus) => {
+      this.setData({
+        likeStatus
+      })
+    })
+    bookModel.getComments(bid).then((comments) => {
+      this.setData({
+        comments: comments.comments
+      })
+    })
+    bookModel.getMyBookCount().then((likeCount) => {
+      this.setData({
+        likeCount
       })
     })
   },
