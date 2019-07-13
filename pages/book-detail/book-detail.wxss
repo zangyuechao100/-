@@ -68,10 +68,18 @@ v-tag {
     color: #aaa;
 }
 
-.component-container v-tag:nth-child(1) view {
+/* .component-container v-tag:nth-child(1) view {
     background: #fffbdd;
 }
 
 .component-container v-tag:nth-child(2) view {
     background: #eefbff;
+} */
+
+.ex-tag1 {
+    background: #fffbdd!important;
+}
+
+.ex-tag2 {
+    background: #eefbff!important;
 }
