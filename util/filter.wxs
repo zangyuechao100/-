@@ -1,0 +1,23 @@
+var format = function (text) {
+    var reg = getRegExp('\\\\n', 'g')
+    var result = text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+    return result
+}
+
+var getClassName = function (index) {
+    return index === 0 ? 'ex-tag1' : 0 || index === 1 ? 'ex-tag2' : ''
+}
+
+var limit = function (array, end) {
+    if (!array || array.length === 0) {
+        return
+    }
+    return array.slice(0, end)
+}
+
+
+module.exports = {
+  format: format,
+  getClassName: getClassName,
+  limit: limit
+}
