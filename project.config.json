@@ -40,20 +40,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
 					"name": "书籍详情页面",
-					"pathName": "pages/book-detail/book-detail",
-					"query": "bid=7",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "详情",
-					"pathName": "pages/book-detail/book-detail",
-					"query": "bid=7",
+					"pathName": "pages/book/book",
+					"query": "",
 					"scene": null
 				}
 			]

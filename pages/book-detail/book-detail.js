@@ -20,24 +20,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading()
     const bid = options.bid
-    bookModel.getDetail(bid).then((detail) => {
+    const detail = bookModel.getDetail(bid)
+    const comments = bookModel.getComments(bid)
+    const likeStatus = bookModel.getLikeStatus(bid)
+
+    Promise.all([detail, likeStatus, comments]).then((res) => {
       this.setData({
-        detail
+        detail: res[0],
+        likeStatus: res[1].like_status,
+        likeCount: res[1].fav_nums,
+        comments: res[2].comments
       })
-    })
-    bookModel.getLikeStatus(bid).then((likeStatus) => {
-      this.setData({
-        likeStatus: likeStatus.like_status,
-        likeCount: likeStatus.fav_nums
-      })
-    })
-    bookModel.getComments(bid).then((comments) => {
-      this.setData({
-        comments: comments.comments
-      })
-    })
-    bookModel.getMyBookCount().then(() => {
+      wx.hideLoading()
     })
   },
 

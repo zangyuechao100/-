@@ -27,6 +27,10 @@ class BookModule extends Http {
       content:comment
     }, 'POST')
   }
+
+  search (start, q) {
+    return this.request(`/book/search?start=${start}&q=${q}&count=20&summary=1`)
+  }
 }
   
 export default BookModule
