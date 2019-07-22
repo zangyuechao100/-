@@ -1,7 +1,8 @@
 const paginationBec = Behavior({
   data: {
     dataArray: [],
-    total: null
+    total: null,
+    nodeResult: false
   },
 
   methods: {
@@ -24,11 +25,17 @@ const paginationBec = Behavior({
       this.setData({
         total
       })
+      if (total === 0) {
+        this.setData({
+          nodeResult: true
+        })
+      }
     },
 
     initialize () {
       this.setData({
         total: null,
+        nodeResult: false,
         dataArray: []
       })
     }
