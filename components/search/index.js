@@ -58,17 +58,17 @@ Component({
       })
     },
     loadMore () {
-      if (!this.data.q || this._isLocked()) {
+      if (!this.data.q || this.isLocked()) {
         return
       }
       if (this.hasMore()) {
-        this._locked()
+        this.locked()
         const length = this.getCurrentStart()
         bookModule.search(length, this.data.q).then((res) => {
           this.setMoreData(res.books)
-          this._unLocked()
+          this.unLocked()
         }).catch(() => {
-          this._unLocked()
+          this.unLocked()
         })
       }
     },
@@ -90,19 +90,6 @@ Component({
     _closeResult () {
       this.setData({
         searching: false
-      })
-    },
-    _isLocked () {
-      return this.data.loading
-    },
-    _locked () {
-      this.setData({
-        loading: true
-      })
-    },
-    _unLocked () {
-      this.setData({
-        loading: false
       })
     }
   },

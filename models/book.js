@@ -31,6 +31,11 @@ class BookModule extends Http {
   search (start, q) {
     return this.request(`/book/search?start=${start}&q=${q}&count=20&summary=1`)
   }
+
+  getMyFavor () {
+    return this.request('classic/favor')
+  }
+
 }
   
 export default BookModule
